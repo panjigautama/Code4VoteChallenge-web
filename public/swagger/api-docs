@@ -5,6 +5,10 @@
     {
       "path": "http://voter.panjigautama.com/swagger/listings/vote",
       "description": "Operations about vote"
+    },
+    {
+      "path": "http://voter.panjigautama.com/swagger/listings/sentiment",
+      "description": "Operations about sentiment"
     }
   ]
 }
