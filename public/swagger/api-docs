@@ -1,0 +1,10 @@
+{
+  "apiVersion": "1",
+  "swaggerVersion": "1.2",
+  "apis": [
+    {
+      "path": "http://localhost/Code4VoteChallenge-web/public/swagger/listings/vote",
+      "description": "Operations about vote"
+    }
+  ]
+}
