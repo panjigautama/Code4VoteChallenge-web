@@ -20,7 +20,7 @@
   <script type="text/javascript">
     $(function () {
       window.swaggerUi = new SwaggerUi({
-      url: "http://localhost/Code4VoteChallenge-web/public/swagger/api-docs",
+      url: "http://voter.panjigautama.com//swagger/api-docs",
       dom_id: "swagger-ui-container",
       supportedSubmitMethods: ['get', 'post', 'put', 'delete'],
       onComplete: function(swaggerApi, swaggerUi){
