@@ -11,6 +11,12 @@
 |
 */
 
+Route::get('/', function()
+{
+	echo 'hello';
+});
+
+
 Route::get('/api-documentation', function()
 {
 	return View::make('api_documentation');
