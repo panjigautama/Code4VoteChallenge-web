@@ -3,7 +3,7 @@
   "swaggerVersion": "1.2",
   "apis": [
     {
-      "path": "http://localhost/Code4VoteChallenge-web/public/swagger/listings/vote",
+      "path": "http://voter.panjigautama.com/swagger/listings/vote",
       "description": "Operations about vote"
     }
   ]
