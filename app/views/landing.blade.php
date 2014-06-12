@@ -76,6 +76,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<li><a href="#"><span> </span>Kemudahan dalam melakukan komparasi latar belakang capres ataupun cawapres</a></li>
 						<li><a href="#"><span> </span>Vote presiden pilihan mu dan suarakan opini mu !</a></li>
 						<li><a href="#"><span> </span>Lihat animo masyarakat tentang pasangan capres idolamu</a></li>
+						<li><a href="#"><span> </span>Dibuat dengan menggunakan API dari <a href="http://developer.pemiluapi.org" target="_blank"><img src="{{ asset('landing/images/pemilu_api_logo.png') }}" alt="" /></a></a></li>
 					</ul>
 					<ul class="big-btns">
 						<!-- <li><a class="iapps" href=""> </a></li> -->
