@@ -1,6 +1,5 @@
 <?php
 use Carbon\Carbon;
-// use GuzzleHttp\Client;
 
 class SentimentController extends BaseController {
 
@@ -34,13 +33,23 @@ class SentimentController extends BaseController {
 
 	public function crawl()
 	{
+		$this->crawler( 'prabowo', 1 );
+		$this->crawler( 'prabowo subianto', 1 );
+		$this->crawler( 'hatta rajasa', 1 );
+		$this->crawler( 'prabowo hatta', 1 );
+		$this->crawler( 'jokowi' , 2 );
+		$this->crawler( 'jusuf kalla' , 2 );
+		$this->crawler( 'jokowi kalla' , 2 );
+	}
+
+	private function crawler( $keyword, $candidate_id )
+	{
 		$settings = array(
 		    'oauth_access_token' 		=> "40501134-owwHlvGckteGYAqRgd61YPo7jHxyIIr9l93yfbzZL",
 		    'oauth_access_token_secret' => "8jRCIFp8fsEj8SaN9lTThV0SiPSTZmYc4rxKD1gTEAVeX",
 		    'consumer_key' 				=> "z18al1rBjLAtEWRcPvklutlex",
 		    'consumer_secret' 			=> "CdQRgSfTqi1ThXcGZXE4dVwhl5UIjNSOLiyJTL8TC6w0VL99O2"
 		);
-		$keyword 		= 'prabowo';
 		$url 			= 'https://api.twitter.com/1.1/search/tweets.json';
 		$getfield 		= '?q='.$keyword.'&lang=en&result_type=mixed&count=10';
 		$requestMethod 	= 'GET';
@@ -55,22 +64,55 @@ class SentimentController extends BaseController {
 		$max = count($response_obj->statuses);
 		for ( $i=0; $i < $max ; $i++) 
 		{ 
-			$date 	= new Carbon($response_obj->statuses[$i]->created_at);
-			$status = new CollectiveTweet(array(
+			if(count(CollectiveTweet::find($response_obj->statuses[$i]->id)) == 0)
+			{
+				$date 	= new Carbon($response_obj->statuses[$i]->created_at);
+				$status = new CollectiveTweet(array(
 
-				'id' 				=> $response_obj->statuses[$i]->id,
-				'candidate_id' 		=> 1,
-				'screen_name' 		=> $response_obj->statuses[$i]->user->screen_name,
-				'keyword' 			=> $keyword,
-				'created_at' 		=> $date,
-				'retweet_count' 	=> $response_obj->statuses[$i]->retweet_count,
-				'favorite_count' 	=> $response_obj->statuses[$i]->favorite_count,
-				'message' 			=> $response_obj->statuses[$i]->text,
-				'polarity' 			=> 2,
-			));
-			$status->save();
+					'id' 				=> $response_obj->statuses[$i]->id,
+					'candidate_id' 		=> $candidate_id,
+					'screen_name' 		=> $response_obj->statuses[$i]->user->screen_name,
+					'keyword' 			=> $keyword,
+					'created_at' 		=> $date,
+					'retweet_count' 	=> $response_obj->statuses[$i]->retweet_count,
+					'favorite_count' 	=> $response_obj->statuses[$i]->favorite_count,
+					'message' 			=> $response_obj->statuses[$i]->text,
+					'polarity' 			=> 2,
+				));
+				$status->save();
+			}
 		}
 
+		// check polarity
+		$max 	= count($response_obj->statuses);
+		$entity = array();
+		for ( $i=0; $i < $max ; $i++) 
+		{ 
+			$entity['data'][$i]['id'] 		= $response_obj->statuses[$i]->id;
+			$entity['data'][$i]['text'] 	= $response_obj->statuses[$i]->text;
+			$entity['data'][$i]['query'] 	= $keyword;
+		} 		
+
+		$sentiment_url =  'http://www.sentiment140.com/api/bulkClassifyJson';
+
+		$data_string = json_encode($entity);                                                                                   
+		$ch = curl_init($sentiment_url);                                                                      
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
+	 	curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json; charset=utf-8","Accept:application/json, text/javascript, */*; q=0.01")); 
+		$result = curl_exec($ch);
+
+		$response_obj = json_decode($result);
+
+		// update polarity
+		$max = count($response_obj);
+		for ( $i=0; $i < $max ; $i++) 
+		{ 
+			$collective_tweet = CollectiveTweet::find($response_obj[$i]->id);
+			$collective_tweet->polarity = $response_obj[$i]->polarity;
+			$collective_tweet->save();
+		}
 	}
 
 }
