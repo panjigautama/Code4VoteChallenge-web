@@ -79,7 +79,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</ul>
 					<ul class="big-btns">
 						<!-- <li><a class="iapps" href=""> </a></li> -->
-						<li><a class="gapps" href="{{ asset('release/presidol.apk') }}" target="_blank"> </a></li>
+						<li><a class="gapps" href="{{ URL::asset('release/presidol.apk') }}" target="_blank"> </a></li>
 						<div class="clear"> </div>
 					</ul>
 				</div>
@@ -125,6 +125,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<!----End-faq---->
 				</div>
 				<!---//End-panels---->
+
+				<!---start-divice-scree-slider----->
+				<div class="img-cursual">
+						<div id="owl-demo" class="owl-carousel">
+			                <div class="item"><img class="lazyOwl" data-src="{{ asset('landing/images/screen1.png') }}" alt="Lazy Owl Image"></div>
+			                <div class="item"><img class="lazyOwl" data-src="{{ asset('landing/images/screen2.png') }}" alt="Lazy Owl Image"></div>
+			                <div class="item"><img class="lazyOwl" data-src="{{ asset('landing/images/screen3.png') }}" alt="Lazy Owl Image"></div>
+			                <div class="item"><img class="lazyOwl" data-src="{{ asset('landing/images/screen4.png') }}" alt="Lazy Owl Image"></div>
+			                <div class="item"><img class="lazyOwl" data-src="{{ asset('landing/images/screen5.png') }}" alt="Lazy Owl Image"></div>
+			                <div class="item"><img class="lazyOwl" data-src="{{ asset('landing/images/screen6.png') }}" alt="Lazy Owl Image"></div>
+		               </div>
+				</div>
+				<!---//End-divice-scree-slider----->
 
 				<!---start-testimonials---->
 					<div class="testimonials">

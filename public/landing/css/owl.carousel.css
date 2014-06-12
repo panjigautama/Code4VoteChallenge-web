@@ -16,7 +16,6 @@
 .owl-carousel{
 	position: relative;
 	-ms-touch-action: pan-y;
-	background: url(../images/divice1.png) no-repeat 50%;
 	min-height: 600px;
 }
 .owl-carousel .owl-wrapper{
@@ -248,7 +247,6 @@
 		width: 73%;
 	}
 	.owl-carousel {
-		background: url(../images/divice2.png) no-repeat 50%;
 		min-height: 428px;
 	}
 	.owl-carousel .owl-item {
@@ -265,7 +263,6 @@
 		width: 73%;
 	}
 	.owl-carousel {
-		background: url(../images/divice1.png) no-repeat 50%;
 		min-height:559px;
 	}
 }
@@ -280,11 +277,9 @@
 		width: 73%;
 	}
 	.owl-carousel {
-		background: url(../images/640divice.png) no-repeat 50%;
 		min-height:559px;
 	}
 	.panel-left span {
-		background: url(../images/sdual-divice.png) no-repeat 0px 0px;
 		margin:0 auto;
 		width:250px;
 		height:366px;
@@ -307,11 +302,9 @@
 		width: 73%;
 	}
 	.owl-carousel {
-		background: url(../images/divice1.png) no-repeat 50%;
 		min-height:559px;
 	}
 	.panel-left span {
-		background: url(../images/sdual-divice.png) no-repeat 0px 0px;
 		margin:0 auto;
 		width:250px;
 		height:366px;
@@ -328,7 +321,6 @@
 		display:none;
 	}
 	.panel-left span {
-		background: url(../images/320dual.png) no-repeat 0px 0px;
 		margin: 0 auto;
 		width:150px;
 		height:220px;
