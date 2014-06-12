@@ -136,6 +136,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			                <div class="item"><img class="lazyOwl" data-src="{{ asset('landing/images/screen4.png') }}" alt="Lazy Owl Image"></div>
 			                <div class="item"><img class="lazyOwl" data-src="{{ asset('landing/images/screen5.png') }}" alt="Lazy Owl Image"></div>
 			                <div class="item"><img class="lazyOwl" data-src="{{ asset('landing/images/screen6.png') }}" alt="Lazy Owl Image"></div>
+			                <div class="item"><img class="lazyOwl" data-src="{{ asset('landing/images/screen7.png') }}" alt="Lazy Owl Image"></div>
 		               </div>
 				</div>
 				<!---//End-divice-scree-slider----->
