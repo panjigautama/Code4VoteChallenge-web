@@ -14,7 +14,7 @@ class UserVoteController extends BaseController {
 		$results = array();
 
 		// get user votes
-		$user_votes = UserVote::all()->load('socmed','candidate','sex')->take(10);
+		$user_votes = UserVote::remember(5)->get()->load('socmed','candidate','sex')->take(10);
 		$results['user_votes'] = $user_votes->toArray();
 
 		// get votes summary
@@ -38,7 +38,7 @@ class UserVoteController extends BaseController {
 
 		if( isset($input['size']) )
 		{
-			$query;
+			$query = UserVote::remember(5);
 			if( isset($input['after_id']) )
 			{
 				$query = UserVote::afterID($input['after_id']);

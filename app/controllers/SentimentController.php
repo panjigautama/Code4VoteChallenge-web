@@ -14,7 +14,7 @@ class SentimentController extends BaseController {
 
 		// get votes summary
 		$results = array();
-		$candidates = Candidate::all();
+		$candidates = Candidate::remember(5)->get();
 		$count = 0;
 		foreach ($candidates as $candidate) 
 		{

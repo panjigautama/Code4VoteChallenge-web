@@ -103,7 +103,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="faq-grid-left">
 							<div class="faq-grid-left-grid">
 								<h4><a href="#">Darimana data pasangan calon presiden didapat ?</a></h4>
-								<p>Kami menggunakan data dari <a href="http://developer.pemiluapi.org" target="_blank"></a> dengan mengambil Presidential Candidate API.</p>
+								<p>Kami menggunakan data dari <a href="http://developer.pemiluapi.org" target="_blank">Pemilu API</a> dengan menggunakan Presidential Candidate API.</p>
 							</div>
 							<div class="faq-grid-left-grid">
 								<h4><a href="#">Darimana data animo masyarakat ?</a></h4>
