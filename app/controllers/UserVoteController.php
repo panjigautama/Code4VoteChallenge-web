@@ -14,7 +14,7 @@ class UserVoteController extends BaseController {
 		$results = array();
 
 		// get user votes
-		$user_votes = UserVote::all()->load('socmed','candidate','sex');
+		$user_votes = UserVote::all()->load('socmed','candidate','sex')->take(10);
 		$results['user_votes'] = $user_votes->toArray();
 
 		// get votes summary
@@ -29,6 +29,34 @@ class UserVoteController extends BaseController {
 		}
 
 		return APIHelper::response( 200, $results );
+
+	}
+
+	public function getVotes()
+	{
+		$input = Input::all();
+
+		if( isset($input['size']) )
+		{
+			$query;
+			if( isset($input['after_id']) )
+			{
+				$query = UserVote::afterID($input['after_id']);
+			}
+
+			if( isset($input['before_id']) )
+			{
+				$query = UserVote::beforeID($input['before_id']);
+			}
+
+			$user_votes = $query->take($input['size'])->get()->load('socmed','candidate','sex');
+			return APIHelper::response( 200, $user_votes->toArray() );
+
+		}
+		else
+		{
+			return APIHelper::response( 400, null );
+		}
 
 	}
 

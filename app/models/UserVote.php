@@ -25,6 +25,16 @@ class UserVote extends Eloquent {
         return $query->where('is_anonymous', '=', 1);
     }   
 
+    public function scopeAfterID($query,$id)
+    {
+        return $query->where('id', '>', $id);
+    }   
+
+    public function scopeBeforeID($query,$id)
+    {
+        return $query->where('id', '<', $id);
+    }
+
     public function scopeByCandidate($query,$candidate_id)
     {
         return $query->where('candidate_id', '=', $candidate_id);

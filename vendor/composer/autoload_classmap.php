@@ -12,6 +12,7 @@ return array(
     'CandidatesSeeder' => $baseDir . '/app/database/seeds/CandidatesSeeder.php',
     'CollectiveTweet' => $baseDir . '/app/models/CollectiveTweet.php',
     'CreateCandidatesTable' => $baseDir . '/app/database/migrations/2014_06_09_094607_create_candidates_table.php',
+    'CreateCollectiveTweetTable' => $baseDir . '/app/database/migrations/2014_06_09_164554_create_collective_tweet_table.php',
     'CreateSexTable' => $baseDir . '/app/database/migrations/2014_06_09_094949_create_sex_table.php',
     'CreateSocmedsTable' => $baseDir . '/app/database/migrations/2014_06_09_094627_create_socmeds_table.php',
     'CreateUserVotesTable' => $baseDir . '/app/database/migrations/2014_06_09_094969_create_user_votes_table.php',

@@ -35,6 +35,7 @@ Route::group(array('prefix' => 'api/1'), function()
 {
 
 	Route::resource('vote', 'UserVoteController');
+	Route::get('opinion', 'UserVoteController@getVotes');
 	Route::resource('sentiment', 'SentimentController');
 	Route::get('sentiment_crawl', 'SentimentController@crawl');
 

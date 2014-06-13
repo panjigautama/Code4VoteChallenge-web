@@ -51,7 +51,7 @@ class SentimentController extends BaseController {
 		    'consumer_secret' 			=> "CdQRgSfTqi1ThXcGZXE4dVwhl5UIjNSOLiyJTL8TC6w0VL99O2"
 		);
 		$url 			= 'https://api.twitter.com/1.1/search/tweets.json';
-		$getfield 		= '?q='.$keyword.'&lang=en&result_type=mixed&count=10';
+		$getfield 		= '?q='.urlencode($keyword).'&lang=en&result_type=mixed&count=10';
 		$requestMethod 	= 'GET';
 
 		$twitter 		= new TwitterAPIExchange($settings);
@@ -106,13 +106,15 @@ class SentimentController extends BaseController {
 		$response_obj = json_decode($result);
 
 		// update polarity
-		$max = count($response_obj);
+		$max = count($response_obj->data);
 		for ( $i=0; $i < $max ; $i++) 
 		{ 
-			$collective_tweet = CollectiveTweet::find($response_obj[$i]->id);
-			$collective_tweet->polarity = $response_obj[$i]->polarity;
+			$collective_tweet = CollectiveTweet::find($response_obj->data[$i]->id);
+			$collective_tweet->polarity = $response_obj->data[$i]->polarity;
 			$collective_tweet->save();
 		}
+
+		return $result;
 	}
 
 }
